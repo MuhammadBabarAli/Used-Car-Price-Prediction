@@ -1,0 +1,142 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 100px auto 0;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+h2 {
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fafafa;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+    background: #e9f1ff;
+}
+
+.form-group button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.form-group button:hover {
+    background-color: #218838;
+}
+
+.form-group .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    outline: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.form-group .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.form-group .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+output {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+#result {
+    margin-top: 20px;
+    margin-left: 50px;
+    text-align: center;
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#logo {
+    margin-top: -120px;
+    margin-left: -15px;
+}

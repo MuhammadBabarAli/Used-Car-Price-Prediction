@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Car Price Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h2>Used Car Price Prediction</h2>
+    </header>
+    <div class="container">
+        <form id="car-form" action="" method="POST">
+            <div class="form-group">
+                <label for="make">Make:</label>
+                <select id="make" name="make" required>
+                    <option value="" disabled selected>Select Make</option>
+                    {% for mk in encoding_maps['make'] %}
+                        <option value="{{ mk }}">{{ mk }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="model">Model:</label>
+                <select id="model" name="model" required>
+                    <option value="" disabled selected>Select Model</option>
+                    {% for md in encoding_maps['model'] %}
+                        <option value="{{ md }}">{{ md }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Car Manufactured Year:</label>
+                <select id="year" name="year" required>
+                    <option value="" disabled selected>Select Year</option>
+                    {% for n in range(1990, 2022) %}
+                        <option value="{{ n }}">{{ n }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mileage">No of kms Driven:</label>
+                <input type="range" id="mileage" name="mileage" min="0" max="1000000" value="0" class="slider" oninput="this.nextElementSibling.value = this.value">
+                <output for="mileage" id="mileageOutput">0</output> km
+            </div>
+<!--            <div class="form-group">-->
+<!--                <label for="condition">Condition:</label>-->
+<!--                <input type="range" id="condition" name="condition" min="1" max="10" value="0" class="slider" oninput="this.nextElementSibling.value = this.value">-->
+<!--                <output for="condition" id="conditionOutput">0</output> / 10-->
+<!--            </div>-->
+            <div class="form-group">
+                <label for="transmission">Transmission:</label>
+                <select id="transmission" name="transmission" required>
+                    <option value="" disabled selected>Select Transmission</option>
+                    {% for t in encoding_maps['transmission'] %}
+                        <option value="{{ t }}">{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fuel">Fuel:</label>
+                <select id="fuel" name="fuel" required>
+                    <option value="" disabled selected>Select Fuel</option>
+                    {% for f in encoding_maps['fuel'] %}
+                        <option value="{{ f }}">{{ f }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <select id="city" name="city" required>
+                    <option value="" disabled selected>Select City</option>
+                    {% for c in encoding_maps['city'] %}
+                        <option value="{{ c }}">{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Predict Price</button>
+            </div>
+        </form>
+        <div id="result">
+            <p>
+                Please enter your vehicles information, be sure<br/> not to miss anything then click on predict price
+            </p>
+            <p>
+                Vehicle make: {{ make_input }}
+                <br/>
+                Vehicle model: {{ model_input }}
+                <br/>
+                Vehicle year: {{ year_input | int }}
+                <br/>
+                Vehicle mileage: {{ mileage_input }} km
+                <br/>
+                Vehicle transmission: {{ transmission_input }}
+                <br/>
+                Vehicle fuel type: {{ fuel_input }}
+                <br/>
+                Vehicle city: {{ city_input }}
+            </p>
+
+            <p>
+            Approximate Price: {{ prediction[0] }} Pkr
+            </p>
+
+            <img src="{{url_for('static', filename='bg_small2.png')}}" id="logo"/>
+        </div>
+    </div>
+    <script src="home.js"></script>
+</body>
+</html>
