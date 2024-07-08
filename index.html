@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Car Price Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h2>Used Car Price Prediction</h2>
+    </header>
+    <div class="container">
+        <form id="car-form" action="" method="POST">
+            <div class="form-group">
+                <label for="make">Make:</label>
+                <select id="make" name="make" required>
+                    <option value="" disabled selected>Select Make</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="model">Model:</label>
+                <select id="model" name="model" required>
+                    <option value="" disabled selected>Select Model</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Car Manufactured Year:</label>
+                <select id="year" name="year" required>
+                    <option value="" disabled selected>Select Year</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mileage">No of kms Driven:</label>
+                <input type="range" id="mileage" name="mileage" min="0" max="1000000" value="0" class="slider" oninput="this.nextElementSibling.value = this.value">
+                <output for="mileage" id="mileageOutput">0</output> km
+            </div>
+            <!-- <div class="form-group">
+                <label for="condition">Condition:</label>
+                <input type="range" id="condition" name="condition" min="1" max="10" value="0" class="slider" oninput="this.nextElementSibling.value = this.value">
+                <output for="condition" id="conditionOutput">0</output> / 10
+            </div> -->
+            <div class="form-group">
+                <label for="transmission">Transmission:</label>
+                <select id="transmission" name="transmission" required>
+                    <option value="" disabled selected>Select Transmission</option>
+                    <option value="manual">Manual</option>
+                    <option value="automatic">Automatic</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fuel">Fuel:</label>
+                <select id="fuel" name="fuel" required>
+                    <option value="" disabled selected>Select Fuel</option>
+                    <option value="petrol">Petrol</option>
+                    <option value="diesel">Diesel</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <select id="city" name="city" required>
+                    <option value="" disabled selected>Select City</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Predict Price</button>
+            </div>
+        </form>
+        <div id="result"></div>
+    </div>
+</body>
+</html>
