@@ -39,7 +39,7 @@ def knnRegressorPkg(data, user_input):
     X = data.drop('price', axis=1)
     y = data['price']
 
-    # Scaling the features
+    # Scaling the featuresgit 
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
