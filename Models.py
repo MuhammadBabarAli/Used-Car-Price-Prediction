@@ -63,6 +63,7 @@ print()
 print("DECISION TREE REGRESSION WITHOUT PACKAGES")
 dec_tree_nopkg_r2, dec_tree_nopkg_mse = decisionTreeRegressorNoPkg(dataset, user_input_df)
 
+
 # Plotting the results
 models = ['KNN (Pkg)', 'KNN (No Pkg)', 'Linear (Pkg)', 'Linear (No Pkg)', 'Decision Tree (Pkg)', 'Decision Tree (No Pkg)']
 mse_scores = [knn_pkg_mse, knn_nopkg_mse, linear_pkg_mse, linear_nopkg_mse, dec_tree_pkg_mse, dec_tree_nopkg_mse]

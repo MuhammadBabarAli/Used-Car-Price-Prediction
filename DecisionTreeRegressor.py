@@ -4,11 +4,8 @@ from sklearn.metrics import r2_score, mean_squared_error
 from FeatureEncoder import featureEncoder, featureEncoderUserInput
 import numpy as np
 import pandas as pd
-<<<<<<< HEAD
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
-=======
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
 
 user_input_df = {
     'make': 'Toyota',
@@ -46,11 +43,8 @@ def decisionTreeRegressorPkg(data, user_input):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Initialize the Decision Tree Regressor
-<<<<<<< HEAD
     dt_regressor = DecisionTreeRegressor(random_state=42, max_depth=13)
-=======
     dt_regressor = DecisionTreeRegressor(random_state=42)
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
 
     # Fit the model
     dt_regressor.fit(X_train, y_train)
@@ -60,7 +54,6 @@ def decisionTreeRegressorPkg(data, user_input):
 
     # Calculate the performance
     mse = mean_squared_error(y_test, y_pred)
-<<<<<<< HEAD
     rmse = np.sqrt(mse)
     print(f'Mean Squared Error: {mse}')
     print(f'Root Mean Squared Error: {rmse}')
@@ -75,21 +68,7 @@ def decisionTreeRegressorPkg(data, user_input):
 
 
 def decisionTreeRegressorNoPkg(data, user_input, max_depth=12, min_samples_split=2, min_impurity_decrease=1e-7):
-    # Custom decision tree regressor functions
-=======
-    print(f'Mean Squared Error (sklearn): {mse}')
-
-    # Calculate R²
-    best_r2 = r2_score(y_test, y_pred)
-    print(f'Best R² Score: {best_r2}')
-
-    print(dt_regressor.predict(user_input))
-
-    return dt_regressor
-
-def decisionTreeRegressorNoPkg(data, user_input):
     # Define the custom decision tree regressor functions
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
     def calculate_mse(y):
         if len(y) == 0:
             return 0
@@ -116,14 +95,9 @@ def decisionTreeRegressorNoPkg(data, user_input):
 
         return best_split
 
-<<<<<<< HEAD
     def build_tree(X, y, depth=0):
         # Stopping conditions
         if depth >= max_depth or len(np.unique(y)) == 1 or len(y) < min_samples_split:
-=======
-    def build_tree(X, y, depth=0, max_depth=5):
-        if depth >= max_depth or len(np.unique(y)) == 1:
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
             return np.mean(y)
 
         feature, value = find_best_split(X, y)
@@ -133,7 +107,22 @@ def decisionTreeRegressorNoPkg(data, user_input):
         left_mask = X[:, feature] <= value
         right_mask = X[:, feature] > value
 
-<<<<<<< HEAD
+        left_tree = build_tree(X[left_mask], y[left_mask], depth + 1)
+        right_tree = build_tree(X[right_mask], y[right_mask], depth + 1)
+
+        return (feature, value, left_tree, right_tree)
+
+    def build_tree(X, y, depth=0, max_depth=5):
+        if depth >= max_depth or len(np.unique(y)) == 1:
+            return np.mean(y)
+
+        feature, value = find_best_split(X, y)
+        if feature is None:
+            return np.mean(y)
+
+        left_mask = X[:, feature] <= value
+        right_mask = X[:, feature] > value
+
         left_tree = build_tree(X[left_mask], y[left_mask], depth + 1)
         right_tree = build_tree(X[right_mask], y[right_mask], depth + 1)
 
@@ -157,7 +146,7 @@ def decisionTreeRegressorNoPkg(data, user_input):
             return predict_tree(left_tree, x)
         else:
             return predict_tree(right_tree, x)
-=======
+
         left_tree = build_tree(X[left_mask], y[left_mask], depth + 1, max_depth)
         right_tree = build_tree(X[right_mask], y[right_mask], depth + 1, max_depth)
 
@@ -175,7 +164,6 @@ def decisionTreeRegressorNoPkg(data, user_input):
                 return predict_tree(left_tree, X)
             else:
                 return predict_tree(right_tree, X)
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
 
     # Define features (X) and target (y)
     X = data.drop(columns=['price'])
@@ -184,11 +172,7 @@ def decisionTreeRegressorNoPkg(data, user_input):
     # Split the data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-<<<<<<< HEAD
     # Build the tree with the improved stopping and pruning criteria
-=======
-    # Build the tree
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
     tree = build_tree(X_train.values, y_train.values)
 
     # Predict on the test set
@@ -196,7 +180,6 @@ def decisionTreeRegressorNoPkg(data, user_input):
 
     # Calculate the performance
     mse_custom = mean_squared_error(y_test, y_pred_custom)
-<<<<<<< HEAD
     rmse = np.sqrt(mse_custom)
     r2 = r2_score(y_test, y_pred_custom)
 
@@ -210,7 +193,7 @@ def decisionTreeRegressorNoPkg(data, user_input):
 
     return r2, mse_custom
 
-
+#
 # print()
 # print("DECISION TREE REGRESSION USING PACKAGES")
 # dec_tree_reg_pkg_model = decisionTreeRegressorPkg(dataset, user_input_df)
@@ -218,20 +201,3 @@ def decisionTreeRegressorNoPkg(data, user_input):
 # print()
 # print("DECISION TREE REGRESSION WITHOUT PACKAGES")
 # decisionTreeRegressorNoPkg(dataset, user_input_df)
-=======
-    print(f'Mean Squared Error (custom): {mse_custom}')
-
-    # Calculate R²
-    best_r2 = r2_score(y_test, y_pred_custom)
-    print(f'Best R² Score: {best_r2}')
-
-    print([predict_tree(tree, x) for x in user_input.values])
-
-print()
-print("DECISION TREE REGRESSION USING PACKAGES")
-dec_tree_reg_pkg_model = decisionTreeRegressorPkg(dataset, user_input_df)
-
-print()
-print("DECISION TREE REGRESSION WITHOUT PACKAGES")
-decisionTreeRegressorNoPkg(dataset, user_input_df)
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d

@@ -6,11 +6,8 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error, r2_score
 from FeatureEncoder import featureEncoder, featureEncoderUserInput
 import numpy as np
-<<<<<<< HEAD
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
-=======
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
 
 user_input_df = {
     'make': 'Toyota',
@@ -42,11 +39,7 @@ def knnRegressorPkg(data, user_input):
     X = data.drop('price', axis=1)
     y = data['price']
 
-<<<<<<< HEAD
-    # Scaling the featuresgit 
-=======
     # Scaling the features
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
@@ -92,11 +85,8 @@ def knnRegressorPkg(data, user_input):
 
     print(best_knn.predict(user_input))
 
-<<<<<<< HEAD
     return mse, best_r2, best_knn
-=======
     return best_knn
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
 
 
 def knnRegressorNoPkg(data, user_input):
@@ -161,12 +151,9 @@ def knnRegressorNoPkg(data, user_input):
     def root_mean_squared_error(y_true, y_pred):
         return np.sqrt(mean_squared_error(y_true, y_pred))
 
-<<<<<<< HEAD
-=======
     def mean_absolute_error(y_true, y_pred):
         return np.mean(np.abs(y_true - y_pred))
 
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
     def r2_score(y_true, y_pred):
         total_variance = np.var(y_true, ddof=1)
         explained_variance = np.var(y_true - y_pred, ddof=1)
@@ -182,7 +169,6 @@ def knnRegressorNoPkg(data, user_input):
 
     print(f'Predicted price for user input: {user_pred}')
 
-<<<<<<< HEAD
     return r2, mse
 
 
@@ -192,14 +178,3 @@ def knnRegressorNoPkg(data, user_input):
 # print()
 # print("KNN REGRESSOR WITHOUT PACKAGES")
 # knnRegressorNoPkg(dataset, user_input_df)
-=======
-
-print("KNN REGRESSOR USING PACKAGES")
-knn_reg_pkg_model = knnRegressorPkg(dataset, user_input_df)
-
-
-# Slow
-print()
-print("KNN REGRESSOR WITHOUT PACKAGES")
-knnRegressorNoPkg(dataset, user_input_df)
->>>>>>> 55d2dfee123402e654768df76899f61529ef5b3d
